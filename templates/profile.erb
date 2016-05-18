@@ -1,13 +1,10 @@
 # MANAGED BY PUPPET!
 <% if @operatingsystem == 'Amazon' -%>
-if [ -d /usr/lib/jvm/jre/bin ]; then
-  export JAVA_HOME=/usr/lib/jvm/jre
+if [ -d /usr/lib/jvm/jre-1.7.0-openjdk.x86_64 ]; then
+  export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
 fi
 if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64 ]; then
   export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
-fi
-if [ -d /usr/lib/jvm/java-1.7.0-openjdk ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk
 fi
 <% end -%>
 <% if @osfamily == 'RedHat' -%>
@@ -25,9 +22,6 @@ fi
 <% if @java_version == '7' -%>
 if [ -d /usr/lib/jvm/jre/bin ]; then
   export JAVA_HOME=/usr/lib/jvm/jre
-fi
-if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64 ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
 fi
 if [ -d /usr/lib/jvm/java-1.7.0-openjdk ]; then
   export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk
