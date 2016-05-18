@@ -1,7 +1,7 @@
 Java
 ====
 
-Installs openjdk and adds the bin folder to PATH
+Installs openjdk and sets JAVA_HOME
 
 Samples
 -------
