@@ -1,5 +1,5 @@
 # MANAGED BY PUPPET!
-<% if @osfamily == 'redhat' -%>
+<% if @osfamily == 'RedHat' -%>
 <% if @java_version == '6' -%>
 if [ -d /usr/lib/jvm/java-1.6.0-openjdk.x86_64 ]; then
   export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk.x86_64
@@ -17,7 +17,7 @@ if [ -d /usr/lib/jvm/java-1.7.0-openjdk ]; then
 fi
 <% end -%>
 <% end -%>
-<% if @osfamily == 'debian' -%>
+<% if @osfamily == 'Debian' -%>
 if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64 ]; then
   export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
 fi
