@@ -7,6 +7,18 @@
 #
 class java::params {
   case $::operatingsystem {
+    'amazon': {
+      $jdk_package = 'java-1.7.0-openjdk-devel'
+      $jre_package = 'java-1.7.0-openjdk'
+
+      file { '/etc/profile.d/java.sh':
+        ensure => present,
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0644',
+        content => template('java/profile.erb'),
+      }
+    }
     'centos','redhat': {
       case $::java_version {
         '6': {
