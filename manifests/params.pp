@@ -6,21 +6,28 @@
 #   - Defines numerous parameters used by other classes
 #
 class java::params {
-  case $::operatingsystem {
-    'amazon': {
-      $jdk_package = 'java-1.7.0-openjdk-devel'
-      $jre_package = 'java-1.7.0-openjdk'
-
-      file { '/etc/profile.d/java.sh':
-        ensure => present,
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0644',
-        content => template('java/profile.erb'),
+  case $::osfamily {
+    'Debian': {
+      case $::operatingsystemmajrelease {
+        '8': {
+          $jdk_package = 'openjdk-7-jdk'
+          $jre_package = 'openjdk-7-jre'
+    
+          file { '/etc/profile.d/java.sh':
+            ensure => present,
+            owner  => 'root',
+            group  => 'root',
+            mode   => '0644',
+            content => template('java/profile.erb'),
+          }
+        }
+        default: {
+          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
+        }
       }
     }
-    'centos','redhat': {
-      case $::java_version {
+    'RedHat': {
+      case $::operatingsystemmajrelease {
         '6': {
           $jdk_package = 'java-1.6.0-openjdk-devel'
           $jre_package = 'java-1.6.0-openjdk'
@@ -46,25 +53,31 @@ class java::params {
           }
         }
         default: {
-          fail("Unsupported version: ${::java_version}")
+          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
         }
       }
     }
-    'debian': {
-      $jdk_package = 'openjdk-7-jdk'
-      $jre_package = 'openjdk-7-jre'
-
-      file { '/etc/profile.d/java.sh':
-        ensure => present,
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0644',
-        content => template('java/profile.erb'),
+    'Linux': {
+      case $::operatingsystem {
+        'Amazon': {
+          $jdk_package = 'java-1.7.0-openjdk-devel'
+          $jre_package = 'java-1.7.0-openjdk'
+    
+          file { '/etc/profile.d/java.sh':
+            ensure => present,
+            owner  => 'root',
+            group  => 'root',
+            mode   => '0644',
+            content => template('java/profile.erb'),
+          }
+        }
+        default: {
+          fail("The ${module_name} module is not supported on an ${::operatingsystem} distribution.")
+        }
       }
     }
     default: {
-      fail("Unsupported version: ${::operatingsystem}")
+      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
   }
-
 }
