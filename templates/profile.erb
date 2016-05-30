@@ -1,38 +1,33 @@
 # MANAGED BY PUPPET!
-<% if @operatingsystem == 'Amazon' -%>
-if [ -d /usr/lib/jvm/jre-1.7.0-openjdk.x86_64 ]; then
-  export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
-fi
-if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64 ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
-fi
-<% end -%>
-<% if @osfamily == 'RedHat' -%>
-<% if @java_version == '6' -%>
-if [ -d /usr/lib/jvm/jre/bin ]; then
-  export JAVA_HOME=/usr/lib/jvm/jre
-fi
-if [ -d /usr/lib/jvm/java-1.6.0-openjdk.x86_64 ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk.x86_64
-fi
-if [ -d /usr/lib/jvm/java-1.6.0-openjdk ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk
-fi
-<% end -%>
-<% if @java_version == '7' -%>
-if [ -d /usr/lib/jvm/jre/bin ]; then
-  export JAVA_HOME=/usr/lib/jvm/jre
-fi
-if [ -d /usr/lib/jvm/java-1.7.0-openjdk ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk
-fi
-<% end -%>
-<% end -%>
 <% if @osfamily == 'Debian' -%>
 if [ -d /usr/lib/jvm/java-7-openjdk-amd64/jre ]; then
   export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre
 fi
 if [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
   export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+fi
+<% end -%>
+<% if @osfamily == 'RedHat' -%>
+<% if @operatingsystemmajrelease == '6' -%>
+if [ -d /usr/lib/jvm/jre/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/jre
+fi
+if [ -d /usr/lib/jvm/java-1.6.0-openjdk.x86_64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk.x86_64
+fi
+if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
+fi
+if [ -d /usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk.x86_64
+fi
+<% end -%>
+<% end -%>
+<% if @operatingsystem == 'Amazon' -%>
+if [ -d /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+fi
+if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
 fi
 <% end -%>
