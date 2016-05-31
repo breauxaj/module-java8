@@ -25,7 +25,7 @@
 #    }
 #
 class java::devel (
-  $ensure = 'latest'
+  $ensure = $::java::params::jdk_package_ensure
 ) inherits ::java::params {
   package { $::java::params::jdk_package:
     ensure  => $ensure,
