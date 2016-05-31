@@ -1,14 +1,13 @@
 # MANAGED BY PUPPET!
-<% if @osfamily == 'Debian' -%>
-if [ -d /usr/lib/jvm/java-7-openjdk-amd64/jre ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre
+<% if @operatingsystem == 'Amazon' -%>
+if [ -d /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
 fi
-if [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
 fi
 <% end -%>
-<% if @osfamily == 'RedHat' -%>
-<% if @operatingsystemmajrelease == '6' -%>
+<% if @operatingsystem == 'CentOS' or @operatingsystem == 'RedHat' -%>
 if [ -d /usr/lib/jvm/jre/bin ]; then
   export JAVA_HOME=/usr/lib/jvm/jre
 fi
@@ -22,12 +21,11 @@ if [ -d /usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin ]; then
   export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk.x86_64
 fi
 <% end -%>
-<% end -%>
-<% if @operatingsystem == 'Amazon' -%>
-if [ -d /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin ]; then
-  export JAVA_HOME=/usr/lib/jvm/jre-1.7.0-openjdk.x86_64
+<% if @operatingsystem == 'Debian' -%>
+if [ -d /usr/lib/jvm/java-7-openjdk-amd64/jre/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre
 fi
-if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64/bin ]; then
-  export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
+if [ -d /usr/lib/jvm/java-7-openjdk-amd64/bin ]; then
+  export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 fi
 <% end -%>
