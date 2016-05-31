@@ -52,14 +52,7 @@ class java::params {
             content => template('java/profile.erb'),
           }
         }
-        default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
-        }
-      }
-    }
-    'Linux': {
-      case $::operatingsystem {
-        'Amazon': {
+        '2016': {
           $jdk_package = 'java-1.7.0-openjdk-devel'
           $jre_package = 'java-1.7.0-openjdk'
     
@@ -72,7 +65,7 @@ class java::params {
           }
         }
         default: {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem} distribution.")
+          fail("The ${module_name} module is not supported on an ${::operatingsystem}${::operatingsystemmajrelease} distribution.")
         }
       }
     }
