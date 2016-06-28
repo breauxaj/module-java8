@@ -22,7 +22,7 @@ class java::params {
         content => template('java/profile.erb'),
       }
     }
-    'CentOS', 'OracleLinux', 'RedHat': {
+    'CentOS', 'OracleLinux', 'RedHat', 'Scientific': {
       case $::operatingsystemmajrelease {
         '6': {
           $jdk_package = 'java-1.6.0-openjdk-devel'
