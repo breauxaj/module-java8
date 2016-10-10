@@ -7,10 +7,7 @@ if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64/bin ]; then
   export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
 fi
 <% end -%>
-<% if @operatingsystem == 'CentOS'
-  || @operatingsystem == 'OracleLinux'
-  || @operatingsystem == 'RedHat'
-  || @operatingsystem == 'Scientific' -%>
+<% if @operatingsystem == 'CentOS' || @operatingsystem == 'OracleLinux' || @operatingsystem == 'RedHat' || @operatingsystem == 'Scientific' -%>
 if [ -d /usr/lib/jvm/jre/bin ]; then
   export JAVA_HOME=/usr/lib/jvm/jre
 fi
