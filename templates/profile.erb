@@ -8,9 +8,9 @@ if [ -d /usr/lib/jvm/java-1.7.0-openjdk.x86_64/bin ]; then
 fi
 <% end -%>
 <% if @operatingsystem == 'CentOS'
-  or @operatingsystem == 'OracleLinux'
-  or @operatingsystem == 'RedHat'
-  or @operatingsystem == 'Scientific' -%>
+  || @operatingsystem == 'OracleLinux'
+  || @operatingsystem == 'RedHat'
+  || @operatingsystem == 'Scientific' -%>
 if [ -d /usr/lib/jvm/jre/bin ]; then
   export JAVA_HOME=/usr/lib/jvm/jre
 fi
