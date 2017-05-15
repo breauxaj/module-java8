@@ -1,4 +1,4 @@
-# Class: java::devel
+# Class: java8::devel
 #
 # This class installs the java jdk package
 #
@@ -20,14 +20,14 @@
 #
 #  To remove the installation, use:
 #
-#    class { 'java::devel':
+#    class { 'java8::devel':
 #      ensure => 'absent'
 #    }
 #
-class java::devel (
-  $ensure = $::java::params::jdk_package_ensure
-) inherits ::java::params {
-  package { $::java::params::jdk_package:
+class java8::devel (
+  $ensure = $::java8::params::jdk_package_ensure
+) inherits ::java8::params {
+  package { $::java8::params::jdk_package:
     ensure  => $ensure,
   }
 

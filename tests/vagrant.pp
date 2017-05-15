@@ -1,12 +1,5 @@
 node default {
-  include ::java
-  include ::java::devel
-
-  case $::operatingsystem {
-    'Amazon': {
-        Package { allow_virtual => false }
-    }
-    default: {}
-  }
+  include ::java8
+  include ::java8::devel
 
 }

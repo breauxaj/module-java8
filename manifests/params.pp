@@ -1,49 +1,32 @@
-# Class: java::params
+# Class: java8::params
 #
 # This class sets parameters used in this module
 #
 # Actions:
 #   - Defines numerous parameters used by other classes
 #
-class java::params {
+class java8::params {
   $jdk_package_ensure = 'latest'
   $jre_package_ensure = 'latest'
 
   case $::osfamily {
-    'Debian': {
-      case $::operatingsystem {
-        default: {
-          case $::operatingsystemmajrelease {
-            default: {
-              $jdk_package = 'openjdk-7-jdk'
-              $jre_package = 'openjdk-7-jre'
-
-              file { '/etc/profile.d/java.sh':
-                ensure => present,
-                owner  => 'root',
-                group  => 'root',
-                mode   => '0644',
-                content => template('java/profile.erb'),
-              }
-            }
-          }
-        }
-      }
-    }
     'RedHat': {
       case $::operatingsystem {
+        'Amazon': {
+          fail("The ${module_name} module is not supported on an ${::operatingsystem} based system.")
+        }
         default: {
           case $::operatingsystemmajrelease {
             default: {
-              $jdk_package = 'java-1.7.0-openjdk-devel'
-              $jre_package = 'java-1.7.0-openjdk'
+              $jdk_package = 'java-1.8.0-openjdk-devel'
+              $jre_package = 'java-1.8.0-openjdk'
 
-              file { '/etc/profile.d/java.sh':
+              file { '/etc/profile.d/java8.sh':
                 ensure => present,
                 owner  => 'root',
                 group  => 'root',
                 mode   => '0644',
-                content => template('java/profile.erb'),
+                content => template('java8/profile.erb'),
               }
             }
           }

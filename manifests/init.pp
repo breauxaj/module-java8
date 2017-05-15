@@ -1,4 +1,4 @@
-# Class: java
+# Class: java8
 #
 # This class installs the java jre package
 #
@@ -14,20 +14,20 @@
 #
 #  For a standard installation, use:
 #
-#    class { 'java':
+#    class { 'java8':
 #      ensure => 'latest'
 #    }
 #
 #  To remove the installation, use:
 #
-#    class { 'java':
+#    class { 'java8':
 #      ensure => 'absent'
 #    }
 #
-class java (
-  $ensure = $::java::params::jre_package_ensure
-) inherits ::java::params {
-  package { $::java::params::jre_package:
+class java8 (
+  $ensure = $::java8::params::jre_package_ensure
+) inherits ::java8::params {
+  package { $::java8::params::jre_package:
     ensure  => $ensure,
   }
 
