@@ -12,9 +12,6 @@ class java8::params {
   case $::osfamily {
     'RedHat': {
       case $::operatingsystem {
-        'Amazon': {
-          fail("The ${module_name} module is not supported on an ${::operatingsystem} based system.")
-        }
         default: {
           case $::operatingsystemmajrelease {
             default: {
