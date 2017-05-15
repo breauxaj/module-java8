@@ -14,7 +14,7 @@
 #
 #  For a standard installation, use:
 #
-#    class { 'java::devel':
+#    class { 'java8::devel':
 #      ensure => 'latest'
 #    }
 #
